@@ -1,40 +1,50 @@
 #include "sead/math/seadVector.h"
+
 #include <al/util.hpp>
-#include <fl/tas.h>
 #include <fl/input.h>
+#include <fl/tas.h>
 
-#if(SMOVER==100)
+#if (SMOVER == 100)
+#	define PADTRIGGER(BUTTON, PNAME)                                                 \
+		bool fisPadTrigger##BUTTON(int port) {                                        \
+			fl::TasHolder &h = fl::TasHolder::instance();                             \
+			if (h.isRunning) {                                                        \
+				if (h.curFrame == 0)                                                  \
+					return h.frames[0].PNAME;                                         \
+				return !h.frames[h.curFrame - 1].PNAME && h.frames[h.curFrame].PNAME; \
+			} else                                                                    \
+				return al::isPadTrigger##BUTTON(port);                                \
+		}
 
-#define PADTRIGGER(BUTTON, PNAME) bool fisPadTrigger##BUTTON(int port) {\
-                               fl::TasHolder& h = fl::TasHolder::instance();\
-                               if (h.isRunning) {\
-                                   if (h.curFrame == 0) return h.frames[0].PNAME;\
-                                   return !h.frames[h.curFrame - 1].PNAME && h.frames[h.curFrame].PNAME;\
-                               } else return al::isPadTrigger##BUTTON(port);}
+#	define PADHOLD(BUTTON, PNAME)                        \
+		bool fisPadHold##BUTTON(int port) {               \
+			fl::TasHolder &h = fl::TasHolder::instance(); \
+			if (h.isRunning) {                            \
+				if (h.curFrame == 0)                      \
+					return h.frames[0].PNAME;             \
+				return h.frames[h.curFrame].PNAME;        \
+			} else                                        \
+				return al::isPadHold##BUTTON(port);       \
+		}
 
-#define PADHOLD(BUTTON, PNAME) bool fisPadHold##BUTTON(int port) {\
-                            fl::TasHolder& h = fl::TasHolder::instance();\
-                            if (h.isRunning) {\
-                                if (h.curFrame == 0) return h.frames[0].PNAME;\
-                                return h.frames[h.curFrame].PNAME;\
-                            } else return al::isPadHold##BUTTON(port);}
+#	define PADRELEASE(BUTTON, PNAME)                                                 \
+		bool fisPadRelease##BUTTON(int port) {                                        \
+			fl::TasHolder &h = fl::TasHolder::instance();                             \
+			if (h.isRunning) {                                                        \
+				if (h.curFrame == 0)                                                  \
+					return false;                                                     \
+				return h.frames[h.curFrame - 1].PNAME && !h.frames[h.curFrame].PNAME; \
+			} else                                                                    \
+				return al::isPadRelease##BUTTON(port);                                \
+		}
 
-#define PADRELEASE(BUTTON, PNAME) bool fisPadRelease##BUTTON(int port) {\
-                               fl::TasHolder& h = fl::TasHolder::instance();\
-                               if (h.isRunning) {\
-                                   if (h.curFrame == 0) return false;\
-                                   return h.frames[h.curFrame - 1].PNAME && !h.frames[h.curFrame].PNAME;\
-                               } else return al::isPadRelease##BUTTON(port);}
-
-sead::Vector2f* fgetLeftStick(int port)
-{
-    fl::TasHolder& h = fl::TasHolder::instance();
-    return h.isRunning ? &h.frames[h.curFrame].leftStick : al::getLeftStick(port);
+sead::Vector2f *fgetLeftStick(int port) {
+	fl::TasHolder &h = fl::TasHolder::instance();
+	return h.isRunning ? &h.frames[h.curFrame].leftStick : al::getLeftStick(port);
 }
-sead::Vector2f* fgetRightStick(int port)
-{
-    fl::TasHolder& h = fl::TasHolder::instance();
-    return h.isRunning ? &h.frames[h.curFrame].rightStick : al::getRightStick(port);
+sead::Vector2f *fgetRightStick(int port) {
+	fl::TasHolder &h = fl::TasHolder::instance();
+	return h.isRunning ? &h.frames[h.curFrame].rightStick : al::getRightStick(port);
 }
 
 PADTRIGGER(A, A);

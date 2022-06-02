@@ -1,13 +1,13 @@
 #define MODULE_NAME "smo-practice"
 #define MODULE_NAME_LEN 12
 
-// rtld working object
+// rtld working object.
 __attribute__((section(".bss"))) char __nx_module_runtime[0xD0];
 
 struct ModuleName {
-    int unknown;
-    int name_lengh;
-    char name[MODULE_NAME_LEN + 1];
+	int unknown;
+	int name_lengh;
+	char name[MODULE_NAME_LEN + 1];
 };
 
 __attribute__((section(".rodata.module_name")))
