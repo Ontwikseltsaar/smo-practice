@@ -7,7 +7,6 @@
 #include <game/StageScene/StageScene.h>
 
 namespace fl {
-
 	void Game::setStageScene(StageScene *stage_scene) {
 		mStageScene = stage_scene;
 	}
@@ -49,5 +48,4 @@ namespace fl {
 	void Game::invincibilityStar() {
 		getPlayer()->mDamageKeeper->activatePreventDamage();
 	}
-
-}	// namespace fl
+}

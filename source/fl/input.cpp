@@ -5,7 +5,6 @@
 #include <fl/tas.h>
 
 #if (SMOVER == 100)
-
 #	define PADTRIGGER(BUTTON, PNAME)                                                 \
 		bool fisPadTrigger##BUTTON(int port) {                                        \
 			fl::TasHolder &h = fl::TasHolder::instance();                             \

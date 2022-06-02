@@ -5,7 +5,7 @@
 
 #include <al/util.hpp>
 
-// These files must exist in your romfs! they are not there by default, and must be added in order for the debug font to work correctly.
+// These files must exist in your romfs! They are not there by default and must be added in order for the debug font to work correctly.
 static const char *DBG_FONT_PATH = "DebugData/Font/nvn_font_jis1.ntx";
 static const char *DBG_SHADER_PATH = "DebugData/Font/nvn_font_shader_jis1.bin";
 static const char *DBG_TBL_PATH = "DebugData/Font/nvn_font_jis1_tbl.bin";
@@ -63,19 +63,19 @@ void setupDebugMenu(GameSystem *gSys) {
 }
 
 void drawBackground(agl::DrawContext *context) {
-	sead::Vector3<float> p1;   // top left
+	sead::Vector3<float> p1;   // Top left.
 	p1.x = -1.0;
 	p1.y = -0.05;
 	p1.z = 0.0;
-	sead::Vector3<float> p2;   // top right
+	sead::Vector3<float> p2;   // Top right.
 	p2.x = -0.1;
 	p2.y = -0.05;
 	p2.z = 0.0;
-	sead::Vector3<float> p3;   // bottom left
+	sead::Vector3<float> p3;   // Bottom left.
 	p3.x = -1.0;
 	p3.y = -1.0;
 	p3.z = 0.0;
-	sead::Vector3<float> p4;   // bottom right
+	sead::Vector3<float> p4;   // Bottom right.
 	p4.x = -0.1;
 	p4.y = -1.0;
 	p4.z = 0.0;

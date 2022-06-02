@@ -117,7 +117,7 @@ namespace smo {
 		u32 len = nn::socket::RecvFrom(socket, buf, bufSize, 0, &server, &size);
 		switch ((InPacketType)buf[0]) {
 			case 0:
-				break;	 //timeout
+				break;	 // Timeout.
 				IN_PACKET(PlayerScriptInfo);
 				IN_PACKET(PlayerTeleport);
 				IN_PACKET(PlayerGo);
@@ -130,6 +130,6 @@ namespace smo {
 	bool Server::isConnected() {
 		return connected;
 	}
-}	// namespace smo
+}
 
 #undef IN_PACKET

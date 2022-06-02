@@ -124,4 +124,4 @@ namespace smo {
 	void InPacketChangePage::on(Server &server) {
 		fl::ui::PracticeUI::instance().curPage = (fl::ui::PracticeUI::Page)page;
 	}
-}	// namespace smo
+}
