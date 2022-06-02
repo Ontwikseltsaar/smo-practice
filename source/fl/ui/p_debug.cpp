@@ -2,9 +2,8 @@
 #include "fl/ui/pages.h"
 #include "game/GameData/GameDataFunction.h"
 
-void fl::ui::debug::update(PracticeUI& ui)
-{
-	StageScene* stageScene = ui.getStageScene();
+void fl::ui::debug::update(PracticeUI &ui) {
+	StageScene *stageScene = ui.getStageScene();
 #if (SMOVER == 100)
 	ui.printf(" Current Scenario: %d\n", GameDataFunction::getWorldScenarioNo(*stageScene->mHolder, GameDataFunction::getCurrentWorldId(*stageScene->mHolder)));
 	ui.printf(" Current World ID: %d\n", GameDataFunction::getCurrentWorldId(*stageScene->mHolder));
