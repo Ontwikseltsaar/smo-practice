@@ -119,12 +119,18 @@ void fl::ui::PracticeUI::menu(sead::TextWriter& p)
         }
 
         if (inputEnabled && curLine == 0) {
-            if (al::isPadTriggerRight(CONTROLLER_AUTO) && !nextFrameNoRightInput)
-                (*(u8*)&curPage)++;
-            if (al::isPadTriggerLeft(CONTROLLER_AUTO) && !nextFrameNoLeftInput)
-                (*(u8*)&curPage)--;
-            if ((*(u8*)&curPage) > (u8)Page::Debug)
-                (*(u8*)&curPage) = (u8)Page::About;
+            if (al::isPadTriggerRight(CONTROLLER_AUTO) && !nextFrameNoRightInput) {
+                if ((*(u8*)&curPage) == (u8)Page::Debug)
+                    (*(u8*)&curPage) = (u8)Page::About;
+                else
+                    (*(u8*)&curPage)++;
+            }
+            if (al::isPadTriggerLeft(CONTROLLER_AUTO) && !nextFrameNoLeftInput) {
+                if ((*(u8*)&curPage) == (u8)Page::About)
+                    (*(u8*)&curPage) = (u8)Page::Debug;
+                else
+                    (*(u8*)&curPage)--;
+            }
         }
 
         auto& page = mPages[*(u8*)&curPage];
