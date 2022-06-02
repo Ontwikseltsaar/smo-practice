@@ -104,7 +104,7 @@ SortIncludes: true
 ### Namespaces
 NamespaceIndentation: All
 CompactNamespaces: false
-FixNamespaceComments: true
+FixNamespaceComments: false
 
 ### Penalties
 # PenaltyBreakAssignment: (unsigned) The penalty for breaking around an assignment operator.

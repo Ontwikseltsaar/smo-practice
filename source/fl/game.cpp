@@ -1,10 +1,9 @@
 #include "fl/game.h"
 
+#include "game/GameData/GameDataFunction.h"
+#include "game/Player/PlayerActorHakoniwa.h"
+#include "game/StageScene/StageScene.h"
 #include "rs/util.hpp"
-
-#include <game/GameData/GameDataFunction.h>
-#include <game/Player/PlayerActorHakoniwa.h>
-#include <game/StageScene/StageScene.h>
 
 namespace fl {
 	void Game::setStageScene(StageScene *stage_scene) {
