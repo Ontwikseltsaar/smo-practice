@@ -1,0 +1,117 @@
+# https://clang.llvm.org/docs/ClangFormatStyleOptions.html
+
+Language: Cpp
+Standard: Cpp11
+AccessModifierOffset: -4
+ColumnLimit: 0
+UseTab: Always
+
+### Alignment
+AlignAfterOpenBracket: Align
+AlignConsecutiveAssignments: false
+AlignConsecutiveDeclarations: false
+AlignConsecutiveMacros: false
+AlignEscapedNewlines: Left
+AlignOperands: true
+AlignTrailingComments: true
+PointerAlignment: Right
+
+### Vertical Space
+## Arguments/Parameters
+AllowAllArgumentsOnNextLine: true
+ConstructorInitializerAllOnOneLineOrOnePerLine: true
+AllowAllConstructorInitializersOnNextLine: false
+AllowAllParametersOfDeclarationOnNextLine: false
+## Blocks/Cases
+AllowShortBlocksOnASingleLine: true
+AllowShortCaseLabelsOnASingleLine: true
+AllowShortFunctionsOnASingleLine: All
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLambdasOnASingleLine: All
+AllowShortLoopsOnASingleLine: true
+## Whitespace
+MaxEmptyLinesToKeep: 1
+KeepEmptyLinesAtTheStartOfBlocks: false
+
+### Parameters
+BinPackArguments: false
+BinPackParameters: false
+
+### Line Breaks
+AlwaysBreakAfterReturnType: None
+AlwaysBreakBeforeMultilineStrings: false
+AlwaysBreakTemplateDeclarations: No
+BreakBeforeBinaryOperators: NonAssignment
+BreakBeforeTernaryOperators: false
+BreakConstructorInitializers: AfterColon
+BreakInheritanceList: AfterColon
+BreakStringLiterals: false
+BreakBeforeBraces: Custom
+BraceWrapping:
+    AfterCaseLabel: false
+    AfterClass: false
+    AfterControlStatement: false
+    AfterEnum: false
+    AfterFunction: false
+    AfterNamespace: false
+    AfterStruct: false
+    AfterUnion: false
+    AfterExternBlock: false
+    BeforeCatch: false
+    BeforeElse: false
+    IndentBraces: false
+    SplitEmptyFunction: false
+    SplitEmptyRecord: false
+    SplitEmptyNamespace: false
+
+### Indentation
+IndentWidth: 4
+TabWidth: 4
+ConstructorInitializerIndentWidth: 4
+ContinuationIndentWidth: 4
+IndentCaseLabels: true
+IndentPPDirectives: AfterHash
+IndentWrappedFunctionNames: true
+
+### Spaces
+SpaceAfterCStyleCast: false
+SpaceAfterLogicalNot: false
+SpaceAfterTemplateKeyword: false
+SpaceBeforeAssignmentOperators: true
+SpaceBeforeCpp11BracedList: false
+SpaceBeforeCtorInitializerColon: true
+SpaceBeforeInheritanceColon: true
+SpaceBeforeParens: ControlStatements
+SpaceBeforeRangeBasedForLoopColon: true
+SpacesBeforeTrailingComments: 3
+SpacesInAngles: false
+SpaceInEmptyParentheses: false
+SpacesInCStyleCastParentheses: false
+SpacesInContainerLiterals: false
+SpacesInParentheses: false
+SpacesInSquareBrackets: false
+
+### Helpers
+DerivePointerAlignment: false
+DisableFormat: false
+ReflowComments: false
+SortUsingDeclarations: true
+
+### Includes
+IncludeBlocks: Regroup
+SortIncludes: true
+
+### Namespaces
+NamespaceIndentation: All
+CompactNamespaces: false
+FixNamespaceComments: true
+
+### Penalties
+# PenaltyBreakAssignment: (unsigned) The penalty for breaking around an assignment operator.
+# PenaltyBreakBeforeFirstCallParameter: (unsigned) The penalty for breaking a function call after call(.
+# PenaltyBreakComment: (unsigned) The penalty for each line break introduced inside a comment.
+# PenaltyBreakFirstLessLess: (unsigned) The penalty for breaking before the first <<.
+# PenaltyBreakString: (unsigned) The penalty for each line break introduced inside a string literal.
+# PenaltyBreakTemplateDeclaration: (unsigned) The penalty for breaking after template declaration.
+# PenaltyExcessCharacter: (unsigned) The penalty for each character outside of the column limit.
+# PenaltyReturnTypeOnItsOwnLine: (unsigned) Penalty for putting the return type of a function onto its own line.
