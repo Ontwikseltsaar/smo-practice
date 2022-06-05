@@ -74,10 +74,16 @@ void fl::ui::misc::update(PracticeUI &ui) {
 		al::setGravity(o, {0, 0, -1});
 	ui.addLine();
 	ui.printf("%sWiggler Pattern: %s\n", ui.curLine == 8 ? ">" : "", ui.curPattern == PracticeUI::MofumofuPattern::Random ? "Random" : ui.mPatternEntries[ui.curPattern].typeStr);
-	if (al::isPadTriggerRight(CONTROLLER_AUTO) && ui.curLine == 8)
-		(*(s8 *)&ui.curPattern)++;
-	if (al::isPadTriggerLeft(CONTROLLER_AUTO) && ui.curLine == 8)
-		(*(s8 *)&ui.curPattern)--;
-	if (*(s8 *)&ui.curPattern > 21 || *(s8 *)&ui.curPattern < -1)
-		ui.curPattern = PracticeUI::MofumofuPattern::Random;
+	if (al::isPadTriggerRight(CONTROLLER_AUTO) && ui.curLine == 8) {
+		if ((*(s8 *)&ui.curPattern) == (s8)PracticeUI::MofumofuPattern::Star)
+			(*(s8 *)&ui.curPattern) = (s8)PracticeUI::MofumofuPattern::Random;
+		else
+			(*(s8 *)&ui.curPattern)++;
+	}
+	if (al::isPadTriggerLeft(CONTROLLER_AUTO) && ui.curLine == 8) {
+		if ((*(s8 *)&ui.curPattern) == (s8)PracticeUI::MofumofuPattern::Random)
+			(*(s8 *)&ui.curPattern) = (s8)PracticeUI::MofumofuPattern::Star;
+		else
+			(*(s8 *)&ui.curPattern)--;
+	}
 }
