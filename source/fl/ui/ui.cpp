@@ -75,8 +75,16 @@ void fl::ui::PracticeUI::update(StageScene *stageScene) {
 
 	if (!showMenu || (!inputEnabled && !holdL)) {
 		if (teleportEnabled) {
+			// If holdL is true and the left D-pad is pressed, that means showMenu is only false
+			// because we just hid the menu. And hiding the menu shouldn't save Mario's position.
+#if SMOVER == 100
 			if (al::isPadTriggerLeft(CONTROLLER_AUTO))
 				savePosition(*player);
+#endif
+#if SMOVER == 130
+			if (al::isPadTriggerLeft(CONTROLLER_AUTO) && !holdL)
+				savePosition(*player);
+#endif
 
 			if (al::isPadTriggerRight(CONTROLLER_AUTO) && saved)
 				loadPosition(*player);
