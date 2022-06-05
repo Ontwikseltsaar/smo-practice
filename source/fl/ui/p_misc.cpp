@@ -30,6 +30,8 @@ void fl::ui::misc::update(PracticeUI &ui) {
 	static u8 gravity = 0;
 	ui.cursor(7);
 	const char *gravityString = nullptr;
+	const char *gravityBlocked = nullptr;
+
 	if (gravity == 0)
 		gravityString = "Down";
 	else if (gravity == 1)
@@ -43,8 +45,15 @@ void fl::ui::misc::update(PracticeUI &ui) {
 	else if (gravity == 5)
 		gravityString = "West";
 
+	// After a capture, don't change gravity. Passing currentHackActor to setGravity currently crashes the game.
+	PlayerActorHakoniwa *player = rs::getPlayerActor(stageScene);
+	if (player->mHackKeeper->currentHackActor)
+		gravityBlocked = " (blocked: capture active)";
+	else
+		gravityBlocked = "";
+
 	bool gravityChanged = false;
-	ui.printf("Gravity: %s\n", gravityString);
+	ui.printf("Gravity: %s%s\n", gravityString, gravityBlocked);
 	if (ui.curLine == 7 && ui.inputEnabled && !ui.nextFrameNoLeftInput && al::isPadTriggerLeft(CONTROLLER_AUTO)) {
 		gravity--;
 		gravityChanged = true;
@@ -56,7 +65,6 @@ void fl::ui::misc::update(PracticeUI &ui) {
 		gravity = 5;
 	else if (gravity > 5)
 		gravity = 0;
-	PlayerActorHakoniwa *player = rs::getPlayerActor(stageScene);
 
 	// After a capture, don't change gravity. Passing currentHackActor to setGravity currently crashes the game.
 	al::LiveActor *o = player;
