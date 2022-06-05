@@ -5,14 +5,14 @@
 
 #pragma once
 
+#include "al/LiveActor/LiveActor.h"
 #include "GameDataHolder.h"
 #include "GameDataHolderAccessor.h"
 #include "GameDataHolderWriter.h"
 #include "game/GameData/GameDataFile.h"
+#include "game/StageScene/ChangeStageInfo.h"
 
-#include <al/LiveActor/LiveActor.h>
 #include <fl/efun.h>
-#include <game/StageScene/ChangeStageInfo.h>
 
 class GameDataFunction {
 public:
