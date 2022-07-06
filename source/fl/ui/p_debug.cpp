@@ -17,4 +17,5 @@ void fl::ui::debug::update(PracticeUI &ui) {
 	ui.printf(" Language: %s\n", stageScene->mHolder->getLanguage());
 	ui.printf("\n");
 	ui.printf(" Practice Mod Version: %s\n", PRACTICE_VERSTR);
+	ui.printf(" Your game version: %s\n", GAME_VERSION);
 }
